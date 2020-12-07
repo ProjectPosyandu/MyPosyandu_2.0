@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DetailArtikelActivity">
+
+    <TextView
+        android:id="@+id/djNamaImunisasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NAMA IMUNISASI"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/djTglImunisasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Tanggal"
+        android:textSize="17dp"/>
+    <TextView
+        android:id="@+id/djJamImunisasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Pukul"
+        android:textSize="17dp"/>
+    <TextView
+        android:id="@+id/djStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Status"
+        android:textStyle="bold"
+        android:textSize="17dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/djKirimPesan"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rec_gradient2"
+            android:layout_marginRight="5dp"
+            android:text="Kirim Pesan"/>
+        <Button
+            android:visibility="invisible"
+            android:id="@+id/djSetSelesai"
+            android:layout_toRightOf="@id/djKirimPesan"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/rec_gradient2"
+            android:text="Atur Selesai"/>
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/tvSetSelesai"
+            android:layout_toRightOf="@id/djKirimPesan"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:background="@color/design_default_color_secondary"
+            android:text="ATUR SELESAI"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MainActivity">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Lengkapi isian di bawah untuk mengirim SMS"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/phoneNumber"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="contoh: 082132312123"
+        android:inputType="phone" />
+
+    <EditText
+        android:id="@+id/smsBody"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="30dp"
+        android:hint="Isi SMS..." />
+
+    <Button
+        android:id="@+id/smsManager"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Kirim SMS lewat SMS Manager" />
+
+    <Button
+        android:id="@+id/smsSIntent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Kirim SMS lewat SENDTO" />
+
+    <Button
+        android:id="@+id/smsVIntent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Kirim SMS lewat VIEW" />
+
+</LinearLayout>
