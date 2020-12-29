@@ -204,36 +204,42 @@ public class ChartFragment extends Fragment {
      series1.hovered().markers().enabled(true);
      series1.hovered().markers().type(MarkerType.CIRCLE).size(4d);
      series1.tooltip().position("right").anchor(Anchor.LEFT_CENTER).offsetX(5d).offsetY(5d);
+     series1.stroke("black");
 
      Line series2 = cartesian.line(series2Mapping);
      series2.name("Kurang");
      series2.hovered().markers().enabled(true);
      series2.hovered().markers().type(MarkerType.CIRCLE).size(4d);
      series2.tooltip().position("right").anchor(Anchor.LEFT_CENTER).offsetX(5d).offsetY(5d);
+     series2.stroke("yellow");
 
      Line series3 = cartesian.line(series3Mapping);
      series3.name("Ideal Bawah");
      series3.hovered().markers().enabled(true);
      series3.hovered().markers().type(MarkerType.CIRCLE).size(4d);
      series3.tooltip().position("right").anchor(Anchor.LEFT_CENTER).offsetX(5d).offsetY(5d);
+     series3.stroke("yellowgreen");
 
      Line series4 = cartesian.line(series4Mapping);
      series4.name("Ideal");
      series4.hovered().markers().enabled(true);
      series4.hovered().markers().type(MarkerType.CIRCLE).size(4d);
      series4.tooltip().position("right").anchor(Anchor.LEFT_CENTER).offsetX(5d).offsetY(5d);
+     series4.stroke("green");
 
      Line series5 = cartesian.line(series5Mapping);
      series5.name("Ideal Atas");
      series5.hovered().markers().enabled(true);
      series5.hovered().markers().type(MarkerType.CIRCLE).size(4d);
      series5.tooltip().position("right").anchor(Anchor.LEFT_CENTER).offsetX(5d).offsetY(5d);
+     series5.stroke("yellowgreen");
 
      Line series6 = cartesian.line(series6Mapping);
      series6.name("Lebih");
      series6.hovered().markers().enabled(true);
      series6.hovered().markers().type(MarkerType.CIRCLE).size(4d);
      series6.tooltip().position("right").anchor(Anchor.LEFT_CENTER).offsetX(5d).offsetY(5d);
+     series6.stroke("yellow");
 
      cartesian.legend().enabled(true);
      cartesian.legend().fontSize(13d);
