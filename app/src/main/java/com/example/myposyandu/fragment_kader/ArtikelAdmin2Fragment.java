@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myposyandu.DownloadTask;
 import com.example.myposyandu.adapter.ArtikelAdapter;
 import com.example.myposyandu.R;
 import com.example.myposyandu.SharedPrefManager;
@@ -34,6 +35,7 @@ public class ArtikelAdmin2Fragment extends Fragment {
     private RecyclerView.LayoutManager lmData;
     private List<ModelDataArtikel> listJadwal = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
+
     TextView status;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class ArtikelAdmin2Fragment extends Fragment {
                     }
                 }
         );
+
         return root;
     }
 
