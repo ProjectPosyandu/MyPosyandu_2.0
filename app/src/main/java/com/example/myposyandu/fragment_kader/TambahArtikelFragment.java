@@ -95,7 +95,7 @@ public class TambahArtikelFragment extends Fragment {
                     showMessage("Field belum terisi. Mohon lengkapi semua field isian diatas");
                 } else {
 //                    tambahArtikel(judul_artikel,isi_artikel,penulis);
-                    uploadArtikel(penulis,path);
+                    uploadArtikel(penulis,judul_artikel,path);
                 }
 
             }
@@ -156,7 +156,7 @@ public class TambahArtikelFragment extends Fragment {
     }
 
     //fungsi untuk upload artikel dalam pdf diana
-    private void uploadArtikel(String id, String path) {
+    private void uploadArtikel(String id, String judul_artikel, String path) {
         String pdfname = String.valueOf(Calendar.getInstance().getTimeInMillis());
 
         //Create a file object using file path
@@ -177,7 +177,7 @@ public class TambahArtikelFragment extends Fragment {
 
         ApiService getResponse = retrofit.create(ApiService.class);
         Call<ResponseBody> call = getResponse.uploadArtikel(
-                fileToUpload, filename, id);
+                fileToUpload, filename, id, judul_artikel);
         Log.d("assss","asss");
         call.enqueue(new Callback<ResponseBody>() {
             @Override

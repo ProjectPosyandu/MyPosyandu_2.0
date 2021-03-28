@@ -112,5 +112,5 @@ public interface ApiService {
     @POST("uploadArtikelPdf.php")
     Call<ResponseBody> uploadArtikel(
             @Part MultipartBody.Part file, @Part("filename") RequestBody name,
-            @Part("id") String id);
+            @Part("id") String id, @Part("judul") String judul_artikel);
 }
