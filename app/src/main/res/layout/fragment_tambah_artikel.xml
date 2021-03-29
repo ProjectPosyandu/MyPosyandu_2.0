@@ -57,7 +57,22 @@
                     android:layout_height="wrap_content"
                     android:textSize="15sp"
                     android:textColor="#000" />
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Tambahkan Dokumen"
+                    android:textSize="15sp"
+                    android:textColor="#000" />
+                <TextView
+                    android:id="@+id/pilihFile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Pilih File"
+                    android:textSize="15sp"
+                    android:textColor="#000"
+                    android:background="@color/bootstrap_default_disabled_border"/>
 
             </LinearLayout>
 

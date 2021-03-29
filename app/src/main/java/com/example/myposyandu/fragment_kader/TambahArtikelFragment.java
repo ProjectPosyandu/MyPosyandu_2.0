@@ -113,7 +113,7 @@ public class TambahArtikelFragment extends Fragment {
         isi = view.findViewById(R.id.etIsiArtikel);
         btnTambah  =view.findViewById(R.id.btnSimpanArtikel);
         // diana
-        //uploadPdf = view.findViewById(R.id.);
+        uploadPdf = view.findViewById(R.id.pilihFile);
 
     }
 
