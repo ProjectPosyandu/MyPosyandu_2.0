@@ -1,5 +1,6 @@
 package com.example.myposyandu.fragment_kader;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
@@ -15,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -29,6 +31,12 @@ import com.example.myposyandu.fragment_bidan.JadwalBidanFragment;
 import com.example.myposyandu.fragment_ibu.ArtikelFragment;
 import com.example.myposyandu.helper.ApiService;
 import com.example.myposyandu.helper.UtilsApi;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.DexterError;
+import com.karumi.dexter.listener.PermissionRequestErrorListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +50,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import androidx.fragment.app.Fragment;
@@ -73,7 +82,7 @@ public class TambahArtikelFragment extends Fragment {
     private String url = "";
     private String path = "";
     private static final int BUFFER_SIZE = 1024 * 2;
-    private static final String IMAGE_DIRECTORY = "/myposyandu";
+    private static final String IMAGE_DIRECTORY = "/";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,6 +91,9 @@ public class TambahArtikelFragment extends Fragment {
 
         inItComponents(view);
         sharedPrefManager = new SharedPrefManager(getContext());
+        requestMultiplePermissions();
+        //klik textview dbg button pilih pdf diana
+        pilihArtikel();
 
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,14 +107,12 @@ public class TambahArtikelFragment extends Fragment {
                     showMessage("Field belum terisi. Mohon lengkapi semua field isian diatas");
                 } else {
 //                    tambahArtikel(judul_artikel,isi_artikel,penulis);
-                    uploadArtikel(penulis,judul_artikel,path);
+                    uploadArtikel(penulis,judul_artikel,isi_artikel,path);
                 }
 
             }
         });
 
-        //klik textview dbg button pilih pdf diana
-        pilihArtikel();
         return view;
     }
 
@@ -156,7 +166,7 @@ public class TambahArtikelFragment extends Fragment {
     }
 
     //fungsi untuk upload artikel dalam pdf diana
-    private void uploadArtikel(String id, String judul_artikel, String path) {
+    private void uploadArtikel(String id, String judul_artikel, String isi, String path) {
         String pdfname = String.valueOf(Calendar.getInstance().getTimeInMillis());
 
         //Create a file object using file path
@@ -177,7 +187,7 @@ public class TambahArtikelFragment extends Fragment {
 
         ApiService getResponse = retrofit.create(ApiService.class);
         Call<ResponseBody> call = getResponse.uploadArtikel(
-                fileToUpload, filename, id, judul_artikel);
+                fileToUpload, filename, id, judul_artikel, isi);
         Log.d("assss","asss");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -365,4 +375,42 @@ public class TambahArtikelFragment extends Fragment {
         }
         return count;
     }
+
+    private void  requestMultiplePermissions(){
+        Dexter.withActivity(getActivity())
+                .withPermissions(
+
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE)
+                .withListener(new MultiplePermissionsListener() {
+                    @Override
+                    public void onPermissionsChecked(MultiplePermissionsReport report) {
+                        // check if all permissions are granted
+                        if (report.areAllPermissionsGranted()) {
+                            Toast.makeText(getActivity(), "All permissions are granted by user!", Toast.LENGTH_SHORT).show();
+                        }
+
+                        // check for permanent denial of any permission
+                        if (report.isAnyPermissionPermanentlyDenied()) {
+                            // show alert dialog navigating to Settings
+
+                        }
+                    }
+
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(List<com.karumi.dexter.listener.PermissionRequest> permissions, PermissionToken token) {
+                        token.continuePermissionRequest();
+                    }
+
+                }).
+                withErrorListener(new PermissionRequestErrorListener() {
+                    @Override
+                    public void onError(DexterError error) {
+                        Toast.makeText(getActivity(), "Some Error! ", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .onSameThread()
+                .check();
+    }
+
 }
